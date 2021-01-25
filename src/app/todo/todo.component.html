@@ -1,0 +1,18 @@
+<section class = "todo">
+    <div>
+        <div class="main">
+        <h1>TODO List</h1>
+            <p>A place to share your todos</p>
+            <input id="filter" type="text" name="filter" [(ngModel)]="filter" placeholder="Filter your todos">
+                <ol>
+                    <li *ngFor="let todo of getFilteredResults(); index as i">
+                        <button id="complete" *ngIf="!todo.completed" (click)="completeTask(todo)" type="button">Complete</button>
+                        <span [ngClass]="{strikethrough:todo.completed}">{{todo.task}}</span>
+                        <button class="remove" (click)="removeTask(todo.task)">x</button>
+                    </li>
+                </ol>
+            <input id="addtodo" type="text" placeholder="Add your to-do" [(ngModel)] ="newTask">
+        <button id="add" (click)="addTask(newTask)">Add</button>
+        </div>
+    </div>
+</section>
